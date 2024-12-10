@@ -1,0 +1,16 @@
+services:
+  container1:
+    image: alpine
+    command: ["sh", "-c", "while true; do sleep 30; done;"]
+    networks:
+      - custom-net
+
+  container2:
+    image: alpine
+    command: ["sh", "-c", "while true; do sleep 30; done;"]
+    networks:
+      - custom-net
+
+networks:
+  custom-net:
+    driver: bridge
