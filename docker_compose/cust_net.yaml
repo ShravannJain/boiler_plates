@@ -1,10 +1,13 @@
 services:
   container1:
-    image: alpine
-    command: ["sh", "-c", "while true; do sleep 30; done;"]
+    image: python:3.9-alpine  # Use a Python image
+    working_dir: /app         # Set working directory inside the container
+    ports:
+      - "8000:8000"           # Map container port 8000 to host port 8000
+    command: ["python", "-m", "http.server", "8000"] # pythons builtin server to access stuffs
     networks:
-      - custom-net
-
+      - custom-net            # Keep your custom network if required
+ 
   container2:
     image: alpine
     command: ["sh", "-c", "while true; do sleep 30; done;"]
